@@ -1,0 +1,37 @@
+.d2gf-action-container {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.d2gf-count-area:after {
+  content: " / ";
+}
+
+#d2gf-forever-btn_txt2img,
+#d2gf-forever-btn_img2img,
+#d2gf-cancel-btn_txt2img,
+#d2gf-cancel-btn_img2img {
+  flex: 1;
+  align-self: stretch;
+}
+#d2gf-forever-btn_txt2img[data-forever=forever],
+#d2gf-forever-btn_img2img[data-forever=forever],
+#d2gf-cancel-btn_txt2img[data-forever=forever],
+#d2gf-cancel-btn_img2img[data-forever=forever] {
+  --button-secondary-background-fill: #b4c0cc;
+  --button-secondary-background-fill-hover: #c2cfdb;
+}
+#d2gf-forever-btn_txt2img[data-seed=fix],
+#d2gf-forever-btn_img2img[data-seed=fix],
+#d2gf-cancel-btn_txt2img[data-seed=fix],
+#d2gf-cancel-btn_img2img[data-seed=fix] {
+  --button-secondary-background-fill: #e94b4b;
+  --button-secondary-background-fill-hover: #ff7777;
+}
+
+#d2gf-count-area_txt2img,
+#d2gf-count-area_img2img {
+  min-width: 5em;
+  text-align: center;
+}
