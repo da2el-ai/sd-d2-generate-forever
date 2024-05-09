@@ -2,8 +2,6 @@ from modules import shared
 
 def on_ui_settings():
     section = "d2_generate_forever", "D2 Generate Forever"
-    print("settings")
-    print(section)
 
     shared.opts.add_option(
         key="d2_gs_wait_base",
