@@ -1,5 +1,7 @@
 # D2 Generate Forever
 
+<img src="img/screenshot.png">
+
 ## About
 
 StableDiffusion webui AUTOMATIC1111（以下 webui）で無限にイラストを生成するための機能拡張です。
