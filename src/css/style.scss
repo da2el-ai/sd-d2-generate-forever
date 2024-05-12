@@ -14,8 +14,10 @@
 #d2gf-forever-btn_img2img,
 #d2gf-cancel-btn_txt2img,
 #d2gf-cancel-btn_img2img {
+    position: relative;
     flex: 1;
     align-self: stretch;
+    overflow: hidden;
 
     &[data-forever='forever'] {
         --button-secondary-background-fill: #b4c0cc;
@@ -25,6 +27,59 @@
     &[data-seed='fix'] {
         --button-secondary-background-fill: #e94b4b;
         --button-secondary-background-fill-hover: #ff7777;
+    }
+}
+
+#d2gf-forever-btn_txt2img,
+#d2gf-forever-btn_img2img {
+    &:before,
+    &:after {
+        position: absolute;
+        width: 4rem;
+        height: 4rem;
+        left: calc(50% - 2rem);
+        top: calc(50% - 2rem);
+        border-radius: 50%;
+        border: solid 1px #fff;
+        scale: 0.1;
+        opacity: 0;
+        pointer-events: none;
+        will-change: transform;
+        content: '';
+    }
+
+    &[data-forever='forever'] {
+        &:before,
+        &:after {
+            animation-name: d2gf-forever-active;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+            animation-timing-function: cubic-bezier(0, 0, 0.22, 1);
+        }
+        &:after {
+            animation-delay: 0.2s;
+        }
+    }
+}
+
+@keyframes d2gf-forever-active {
+    0% {
+        opacity: 0;
+        scale: 0.1;
+    }
+    29% {
+        opacity: 0;
+    }
+    30% {
+        opacity: 1;
+        scale: 0.1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        scale: 3;
     }
 }
 
