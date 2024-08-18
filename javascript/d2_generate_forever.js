@@ -1,15 +1,19 @@
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __publicField = (obj, key, value) => {
-  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-  return value;
-};
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 class D2GFCounter {
+  /**
+   * コンストラクタ
+   *
+   * @param type txt2img / img2img
+   * @param onChangeCount カウンタ更新時に実行する関数
+   */
   constructor(type) {
     __publicField(this, "type");
     __publicField(this, "countArea");
     __publicField(this, "batchArea");
     __publicField(this, "batchCountInput");
+    __publicField(this, "batchCountText", "");
     __publicField(this, "count", 0);
     this.type = type;
   }
@@ -34,7 +38,8 @@ class D2GFCounter {
   getBatchCount() {
     const batchCountInput = this.batchCountInput;
     if (this.batchArea) {
-      this.batchArea.textContent = `${batchCountInput.value === "1" ? "∞" : batchCountInput.value}`;
+      this.batchCountText = `${batchCountInput.value === "1" ? "∞" : batchCountInput.value}`;
+      this.batchArea.textContent = this.batchCountText;
     }
     return parseInt(batchCountInput.value);
   }
@@ -67,6 +72,7 @@ class D2GFGenerateForever {
     __publicField(this, "state");
     __publicField(this, "counter");
     __publicField(this, "generateCount", 0);
+    __publicField(this, "pageTitle");
     this.type = type;
     this.state = {
       forever: "stop",
@@ -74,6 +80,7 @@ class D2GFGenerateForever {
     };
     this.generateCount = 0;
     this.counter = new D2GFCounter(type);
+    this.pageTitle = document.title;
   }
   /**
    * 初期化
@@ -120,6 +127,17 @@ class D2GFGenerateForever {
     foreverBtn.setAttribute(`data-${stateAttr}`, state);
     cancelBtn.setAttribute(`data-${stateAttr}`, state);
   }
+  // webui自体のタイトル変更に影響があるので実装見送り
+  // /**
+  //  * ページタイトルを変更
+  //  */
+  // setTitle(count: number = 0, batchCount: string = '') {
+  //     if (count) {
+  //         document.title = `${this.pageTitle} - [${count} / ${batchCount}]`;
+  //     } else {
+  //         document.title = this.pageTitle;
+  //     }
+  // }
   /**
    * 無限生成停止
    */

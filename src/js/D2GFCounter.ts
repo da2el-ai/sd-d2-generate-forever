@@ -8,8 +8,15 @@ class D2GFCounter {
     countArea: HTMLElement | undefined;
     batchArea: HTMLElement | undefined;
     batchCountInput: HTMLInputElement | undefined;
+    batchCountText: string = '';
     count = 0;
 
+    /**
+     * コンストラクタ
+     *
+     * @param type txt2img / img2img
+     * @param onChangeCount カウンタ更新時に実行する関数
+     */
     constructor(type: TType) {
         this.type = type;
     }
@@ -42,7 +49,8 @@ class D2GFCounter {
     getBatchCount(): number {
         const batchCountInput = this.batchCountInput as HTMLInputElement;
         if (this.batchArea) {
-            this.batchArea.textContent = `${batchCountInput.value === '1' ? '∞' : batchCountInput.value}`;
+            this.batchCountText = `${batchCountInput.value === '1' ? '∞' : batchCountInput.value}`;
+            this.batchArea.textContent = this.batchCountText;
         }
         return parseInt(batchCountInput.value);
     }

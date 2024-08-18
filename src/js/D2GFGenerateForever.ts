@@ -15,6 +15,7 @@ class D2GFGenerateForever {
     state: TStateDict;
     counter: D2GFCounter;
     generateCount = 0;
+    pageTitle: string;
 
     /**
      * コンストラクタ
@@ -28,6 +29,7 @@ class D2GFGenerateForever {
         };
         this.generateCount = 0;
         this.counter = new D2GFCounter(type);
+        this.pageTitle = document.title;
     }
 
     /**
@@ -88,11 +90,24 @@ class D2GFGenerateForever {
         cancelBtn.setAttribute(`data-${stateAttr}`, state);
     }
 
+    // webui自体のタイトル変更に影響があるので実装見送り
+    // /**
+    //  * ページタイトルを変更
+    //  */
+    // setTitle(count: number = 0, batchCount: string = '') {
+    //     if (count) {
+    //         document.title = `${this.pageTitle} - [${count} / ${batchCount}]`;
+    //     } else {
+    //         document.title = this.pageTitle;
+    //     }
+    // }
+
     /**
      * 無限生成停止
      */
     cancelForever() {
         this.changeState('forever', 'stop');
+        // this.setTitle();
     }
 
     /**
@@ -115,6 +130,7 @@ class D2GFGenerateForever {
         if (interruptBtn.offsetParent === null && this.state.forever === 'forever') {
             generateBtn.click();
             this.counter.addCount();
+            // this.setTitle(this.counter.count, this.counter.batchCountText);
         }
 
         if (this.counter.getBatchCount() > 1 && this.counter.count >= this.counter.getBatchCount()) {
