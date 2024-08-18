@@ -1,21 +1,28 @@
 # D2 Generate Forever
 
-<img src="img/screenshot.png">
+<img src="img/screenshot_02.png">
 
 ## About
 
-StableDiffusion webui AUTOMATIC1111（以下 webui）で無限にイラストを生成するための機能拡張です。
+StableDiffusion webui AUTOMATIC1111やForge（以下 webui）で無限にイラストを生成するための機能拡張です。
 
-- 外部webサービスをwebuiから実行したい人向け
-- ローカル生成には不向きです
-- ローカルで無限生成したい人は [Easy Generate Forever](https://github.com/blue-pen5805/sdweb-easy-generate-forever) がオススメです
+- 生成中にプロンプト変更が反映できる！
+  - 標準のBatch countを使うと生成中にプロンプトを変更しても反映されない
+- [KohakuNAI](https://github.com/KohakuBlueleaf/Kohaku-NAI)で自動生成ができる！
 
 ## Feature
 
 - 無限に画像生成できる
-- batch countで枚数上限が指定できる
+- 枚数上限が指定できる
 - 待機時間、待機時間の振れ幅を設定できる（settings 👉 D2 Generate Forever）
 
+## Upadte
+
+- 2024.08.18
+  - 上限指定に標準のBatch countを使わず、取り消しボタンの右の入力欄を使用
+  - これによりローカル生成でも生成中のプロンプト変更を反映できるようになった
+
+<img src="img/screenshot_03.png">
 
 ## Installation
 

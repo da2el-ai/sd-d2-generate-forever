@@ -18,15 +18,20 @@ class D2GFCounter {
     this.type = type;
   }
   createContainer() {
-    const app = gradioApp();
     const container = document.createElement("span");
     container.id = `d2gf-count-container_${this.type}`;
     this.countArea = document.createElement("span");
     this.countArea.classList.add("d2gf-count-area");
     this.batchArea = document.createElement("span");
+    this.batchCountInput = document.createElement("input");
+    this.batchCountInput.type = "number";
+    this.batchCountInput.min = "1";
+    this.batchCountInput.value = "1";
+    this.batchCountInput.classList.add("d2gf-batch-count");
+    container.appendChild(this.batchCountInput);
     container.appendChild(this.countArea);
     container.appendChild(this.batchArea);
-    this.batchCountInput = app.querySelector(`#${this.type}_batch_count input`);
+    container.id = `d2gf-count-container_${this.type}`;
     return container;
   }
   /**

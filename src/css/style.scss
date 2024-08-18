@@ -4,10 +4,34 @@
     align-items: center;
 }
 
+#d2gf-count-container_txt2img,
+#d2gf-count-container_img2img {
+    display: flex;
+    align-items: center;
+}
+
 .d2gf-count-area {
     &:after {
         content: ' / ';
     }
+}
+
+.d2gf-batch-count[type='number'] {
+    display: block;
+    position: relative;
+    width: 4.5em;
+    margin-right: 0.5rem;
+    outline: none !important;
+    box-shadow: var(--input-shadow);
+    border: var(--input-border-width) solid var(--input-border-color);
+    border-radius: var(--input-radius);
+    background: var(--input-background-fill);
+    padding: var(--size-2) var(--size-2);
+    height: var(--size-6);
+    color: var(--body-text-color);
+    font-size: var(--input-text-size);
+    line-height: var(--line-sm);
+    text-align: right;
 }
 
 #d2gf-forever-btn_txt2img,

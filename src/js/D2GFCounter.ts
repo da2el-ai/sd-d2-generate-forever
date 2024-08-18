@@ -22,7 +22,7 @@ class D2GFCounter {
     }
 
     createContainer(): HTMLElement {
-        const app = gradioApp();
+        // const app = gradioApp();
 
         const container = document.createElement('span');
         container.id = `d2gf-count-container_${this.type}`;
@@ -31,11 +31,19 @@ class D2GFCounter {
         this.countArea.classList.add('d2gf-count-area');
 
         this.batchArea = document.createElement('span');
-        container.appendChild(this.countArea);
-        container.appendChild(this.batchArea);
 
         // バッチカウントエレメント
-        this.batchCountInput = app.querySelector(`#${this.type}_batch_count input`) as HTMLInputElement;
+        // this.batchCountInput = app.querySelector(`#${this.type}_batch_count input`) as HTMLInputElement;
+        this.batchCountInput = document.createElement('input');
+        this.batchCountInput.type = 'number';
+        this.batchCountInput.min = '1';
+        this.batchCountInput.value = '1';
+        this.batchCountInput.classList.add('d2gf-batch-count');
+
+        container.appendChild(this.batchCountInput);
+        container.appendChild(this.countArea);
+        container.appendChild(this.batchArea);
+        container.id = `d2gf-count-container_${this.type}`;
 
         return container;
     }
